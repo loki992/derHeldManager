@@ -1,6 +1,5 @@
 package pl.heldManager.game;
 
-import antlr.LexerSharedInputState;
 import pl.heldManager.player.Player;
 
 import javax.persistence.*;
@@ -19,9 +18,53 @@ public class Game {
 
     @ManyToOne
     private Player Master;
-
+    @Column(nullable = false)
     private String system;
 
+    @Column(nullable = false)
 
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Player> getPlayersList() {
+        return playersList;
+    }
+
+    public void setPlayersList(List<Player> playersList) {
+        this.playersList = playersList;
+    }
+
+    public Player getMaster() {
+        return Master;
+    }
+
+    public void setMaster(Player master) {
+        Master = master;
+    }
+
+    public String getSystem() {
+        return system;
+    }
+
+    public void setSystem(String system) {
+        this.system = system;
+    }
+
+    public Game() {
+    }
 }

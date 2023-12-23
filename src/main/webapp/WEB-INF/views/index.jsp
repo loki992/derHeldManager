@@ -21,6 +21,9 @@
     <tr>
         <td><a href="newPlayer">Create New Player</a></td>
     </tr>
+    <tr>
+        <td><a href="showAllGames">Show All Games</a></td>
+    </tr>
 </table>
 </body>
 </html>

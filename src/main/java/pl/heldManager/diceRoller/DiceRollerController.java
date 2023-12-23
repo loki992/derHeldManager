@@ -1,10 +1,8 @@
 package pl.heldManager.diceRoller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -16,17 +14,26 @@ public class DiceRollerController {
         return random.nextInt(max- min) +min;
     }
 
+    @PostMapping("/diceRoll")
+    @ResponseBody
+    public String playerRollsTheDice(@RequestParam(required = false) long player,
+                                     @RequestParam String dice){
+        System.out.println(dice);
+        return String.valueOf(getRandomNumber(1,Integer.parseInt(dice.substring(1))+1));
+
+    }
+
     @RequestMapping("/diceRoll")
     public String rollingDice(@RequestParam(required = false) String dice){
         if (!(dice ==null)){
             return String.valueOf(getRandomNumber(1,Integer.parseInt(dice)+1));
         } else {
-            return "/chooseDice";
+            return "/diceRoll1";
         }
     }
     @RequestMapping("/chooseDice")
     public String chooseDice(){
-        return "diceRoll";
+        return "diceRoll1";
     }
 
     @GetMapping("/k100")
