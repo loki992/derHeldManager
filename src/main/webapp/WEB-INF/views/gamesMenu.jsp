@@ -14,7 +14,7 @@
 <body>
 <c:forEach items="${games}" var="game">
     <p>
-            ${game.id} | ${game.master.login} | ${game.system} | ${game.status} | <a href="editGameData?id=${game.id}">Update this game</a>  <a href="deleteGame?id=${game.id}">Delete this Game</a>
+            ${game.id} | ${game.master.login} | ${game.system} | ${game.status} | <a href="updateGame?id=${game.id}">Update this game</a>  <a href="deleteGame?id=${game.id}">Delete this Game</a>
     </p>
 </c:forEach>
 </body>

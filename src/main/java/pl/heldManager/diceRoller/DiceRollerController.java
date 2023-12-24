@@ -16,6 +16,9 @@ public class DiceRollerController {
 
     @PostMapping("/diceRoll")
     @ResponseBody
+
+    //@TODO dodawanie losowanej liczby do gracza w danej grze, wybor gry w ktorej losujemy
+
     public String playerRollsTheDice(@RequestParam(required = false) long player,
                                      @RequestParam String dice){
         System.out.println(dice);

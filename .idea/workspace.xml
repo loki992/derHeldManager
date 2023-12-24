@@ -10,16 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d80a67-3116-4861-abd1-449902628e49" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/diceRoll1.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/gamesMenu.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/updateGame.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/heldManager/diceRoller/DiceRollerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/heldManager/diceRoller/DiceRollerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/heldManager/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/heldManager/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/heldManager/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/heldManager/game/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/heldManager/game/GameDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/heldManager/game/GameDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/heldManager/player/PlayerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/heldManager/player/PlayerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/diceRoll.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/gamesMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/gamesMenu.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +186,7 @@
       <updated>1702762756862</updated>
       <workItem from="1702762763645" duration="130000" />
       <workItem from="1702762915315" duration="52967000" />
-      <workItem from="1703277479653" duration="5720000" />
+      <workItem from="1703277479653" duration="10322000" />
     </task>
     <servers />
   </component>
