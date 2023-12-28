@@ -19,7 +19,7 @@ public class Game {
     @ManyToOne
     private Player Master;
     @Column(nullable = false)
-    private String system;
+    private String gameSystem;
 
     @Column(nullable = false)
 
@@ -57,12 +57,12 @@ public class Game {
         Master = master;
     }
 
-    public String getSystem() {
-        return system;
+    public String getGameSystem() {
+        return gameSystem;
     }
 
-    public void setSystem(String system) {
-        this.system = system;
+    public void setGameSystem(String gameSystem) {
+        this.gameSystem = gameSystem;
     }
 
     public Game() {

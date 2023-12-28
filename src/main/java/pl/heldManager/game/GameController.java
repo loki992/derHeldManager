@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.heldManager.player.Player;
 import pl.heldManager.player.PlayerController;
 import pl.heldManager.player.PlayerDao;
 
@@ -27,11 +28,38 @@ public class GameController {
 
     @GetMapping("/newGame")
     public String createNewGame(Model model) {
-            List<Game> games = gameDao.findAll();
-            model.addAttribute("games", games);
+        List<Game> games = gameDao.findAll();
+        model.addAttribute("games", games);
+        List<Player> players = playerDao.findAll();
+        model.addAttribute("players", players);
 
-            return "newGame";
-        }
+        return "newGame";
+    }
+
+    @PostMapping("/newGame")
+    public String postNewGame(Model model,
+                              @RequestParam String gameStatus,
+                              @RequestParam String gameSystem,
+                              @RequestParam long playerId){
+        System.out.println("---------------");
+        System.out.println(gameSystem);
+        System.out.println(gameStatus);
+        System.out.println(playerId);
+        System.out.println("---------------");
+
+        Game game = new Game();
+        game.setMaster(playerDao.getOne(playerId));
+        game.setGameSystem(gameSystem);
+        game.setStatus(gameStatus);
+        System.out.println("---------------");
+        System.out.println(game.getId());
+        System.out.println(game.getGameSystem());
+        System.out.println(game.getStatus());
+        System.out.println(game.getMaster());
+
+        gameDao.save(game);
+        return "redirect:/showAllGames";
+    }
 
     @GetMapping("/showAllGames")
     public String showAllGames(Model model) {
@@ -56,11 +84,11 @@ public class GameController {
 
     @RequestMapping("/deleteGame")
     public String deleteGame(Model model, @RequestParam long id) {
-            gameDao.deleteById(id);
+        gameDao.deleteById(id);
         List<Game> games = gameDao.findAll();
         model.addAttribute("games", games);
-            return "gamesMenu";
-        }
+        return "gamesMenu";
+    }
 
     @GetMapping("/updateGame")
     public String updateGameGet(Model model, @RequestParam long id) {
@@ -68,15 +96,22 @@ public class GameController {
         model.addAttribute("gameToEdit", game);
         List<Game> games = gameDao.findAll();
         model.addAttribute("games", games);
+
+        List<Player> players = playerDao.findAll();
+        model.addAttribute("players", players);
+
         return "updateGame";
     }
+
     @PostMapping("/updateGame")
-    public String updateGamePost(Model model, @RequestParam String gameSystem, @RequestParam String gameStatus, @RequestParam long id) {
+    public String updateGamePost(Model model, @RequestParam String gameSystem, @RequestParam String gameStatus, @RequestParam long id, @RequestParam long playerId) {
         Game game = gameDao.getOne(id);
         game.setStatus(gameStatus);
-        game.setSystem(gameSystem);
+        game.setGameSystem(gameSystem);
+        game.setMaster(playerDao.getOne(playerId));
         gameDao.save(game);
-        return "gamesMenu";
+
+        return "redirect:/showAllGames";
     }
-    }
+}
 

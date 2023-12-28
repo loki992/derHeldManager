@@ -12,10 +12,45 @@
     <title>Games</title>
 </head>
 <body>
+<table>
+    <tr>
+        <td>
+            Game id:
+        </td>
+        <td>
+            Game Master:
+        </td>
+        <td>
+            System:
+        </td>
+        <td>
+            Status:
+        </td>
+        <td>
+            Actions:
+        </td>
+    </tr>
+
 <c:forEach items="${games}" var="game">
-    <p>
-            ${game.id} | ${game.master.login} | ${game.system} | ${game.status} | <a href="updateGame?id=${game.id}">Update this game</a>  <a href="deleteGame?id=${game.id}">Delete this Game</a>
-    </p>
+    <tr>
+        <td>
+            ${game.id}
+        </td>
+        <td>
+            ${game.master.login}
+        </td>
+        <td>
+            ${game.gameSystem}
+        </td>
+        <td>
+            ${game.status}
+        </td>
+        <td>
+        <a href="updateGame?id=${game.id}">Update this game</a> | <a href="deleteGame?id=${game.id}">Delete this Game</a>
+        </td>
+    </tr>
 </c:forEach>
+</table>
+<jsp:include page="index.jsp"></jsp:include>
 </body>
 </html>

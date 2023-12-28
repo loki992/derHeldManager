@@ -13,11 +13,21 @@
 <body>
 <form method="post">
     </br><label for="gameSystem"> System:</label>
-    <input type="text" value="${gameToEdit.system}" id="gameSystem" name="gameSystem">
+    <input type="text" value="${gameToEdit.gameSystem}" id="gameSystem" name="gameSystem">
     </br>
     <label for="gameStatus"> Status:</label>
     <input type="text" value="${gameToEdit.status}" id="gameStatus" name="gameStatus">
-    </br>
+
+    </br><label for="playersId"> Game Master:</label>
+    <input list="players" id="playersId" name="playerId">
+    <datalist id="players">
+        <c:forEach items="${players}" var="player">
+            <option value="${player.id}" label="${player.login}"></option>
+        </c:forEach>
+    </datalist>
+
+
+
 <input type="submit" value="wyslij">
 </form>
 </body>

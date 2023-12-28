@@ -5,11 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.heldManager.player.Player;
 import pl.heldManager.player.PlayerController;
 import pl.heldManager.player.PlayerDao;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -69,28 +73,27 @@ public class CharacterController {
     }
 
     @PostMapping("/newCharacter")
-    public String newCharacter(@RequestParam int age,
-                               @RequestParam String birthPlace,
-                               @RequestParam int dex,
-                               @RequestParam int edu,
-                               @RequestParam int fit,
-                               @RequestParam int hp,
-//                               @RequestParam BASIC SKILLS,
+    public String newCharacter( @RequestParam int age,
+                                @RequestParam String birthPlace,
+                                @RequestParam int dex,
+                                @RequestParam int edu,
+                                @RequestParam int fit,
+                                @RequestParam int hp,
                                @RequestParam String job,
                                @RequestParam String homeCity,
-                               @RequestParam int mov,
-                               @RequestParam int looks,
-                               @RequestParam int luck,
-                               @RequestParam int intel,
-                               @RequestParam int mp,
-//                               @RequestParam int sex,
+                                @RequestParam int mov,
+                                @RequestParam int looks,
+                                @RequestParam int luck,
+                                @RequestParam int intel,
+                                @RequestParam int mp,
                                @RequestParam String charName,
-                               @RequestParam int phys,
-                               @RequestParam long player,
-                               @RequestParam int pw,
-                               @RequestParam int sanity,
-                               @RequestParam int str,
+                                @RequestParam int phys,
+                                @RequestParam long player,
+                                @RequestParam int pw,
+                                @RequestParam int sanity,
+                                @RequestParam int str,
                                @RequestParam String charSurname,
+
                                Model model) {
         Character character = new Character();
         character.setPlayer(playerDao.getOne(player));
@@ -115,9 +118,33 @@ public class CharacterController {
         character.setSanity(sanity);
         character.setStrength(str);
         character.setSurname(charSurname);
+        System.out.println("------------");
+        System.out.println(character.getName());
+        System.out.println("fitness: " +character.getFitness());
+        System.out.println("intel: " +character.getInteligence());
+        System.out.println("------------");
 
-        characterDao.save(character);
-        model.addAttribute("charId", character.getId());
+        model.addAttribute("newlyChar", character);
+        return "forward:/tryToCreate";
+    }
+
+    @RequestMapping("/tryToCreate")
+    public String tryToCreate(Model model,
+                              @Valid @ModelAttribute Character newlyChar,
+                              BindingResult result) {
+        System.out.println("Name: " +newlyChar.getName());
+        System.out.println("fitness: " +newlyChar.getFitness());
+        System.out.println("intel: " +newlyChar.getInteligence());
+        System.out.println("------------");
+        if (result.hasErrors()){
+            System.out.println("~~~~~~~~~~result has errors~~~~~~~~~~");
+
+            return "dataInputError";
+    }
+        System.out.println("~~~~~~~~~~in else~~~~~~~~~~");
+        characterDao.save(newlyChar);
+        model.addAttribute("charId", newlyChar.getId());
+
         return "created";
     }
 
